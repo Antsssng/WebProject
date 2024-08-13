@@ -19,5 +19,10 @@ public class UserService {
         userRepository.save(userDTO.toEntity());
     }
 
+    public void deleteUser(String userId) {
+
+        userRepository.deleteById(userId);
+    }
+
 
 }
