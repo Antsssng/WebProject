@@ -20,10 +20,16 @@ public class UserController {
     }
 
     @PostMapping("/user/delete")
-    public String deleteUser(String userId) {
-        userService.deleteUser(userId);
-
+    public String deleteUser(UserDTO userDTO) {
+        userService.deleteUser(userDTO);
         return "/index";
+    }
+
+    @PostMapping("/user/login")
+    public String loginUser(UserDTO userDTO) {
+
+        if(userService.loginUser(userDTO)) return "/index";
+        else return "/login";
     }
 
 }

@@ -2,6 +2,8 @@ package com.example.demo.DTO;
 
 import com.example.demo.Entity.UserEntity;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 public class UserDTO {

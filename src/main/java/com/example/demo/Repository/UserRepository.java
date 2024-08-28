@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String> {
-    public UserEntity findByUserId(String username);
+    public UserEntity findByUserId(String userId);
 }

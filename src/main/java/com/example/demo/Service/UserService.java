@@ -17,11 +17,28 @@ public class UserService {
         //패스워드 암호화
         userDTO.setUserPw(passwordEncoder.encode(userDTO.getUserPw()));
         userRepository.save(userDTO.toEntity());
+
     }
 
-    public void deleteUser(String userId) {
+    public void deleteUser(UserDTO userDTO) {
 
-        userRepository.deleteById(userId);
+        String pw = userRepository.findByUserId(userDTO.getUserId()).getPassword();
+
+        if (passwordEncoder.matches(userDTO.getUserPw(), pw))
+        {
+            userRepository.deleteById(userDTO.getUserId());
+        }
+    }
+
+    public boolean loginUser(UserDTO userDTO)
+    {
+        String pw = userRepository.findByUserId(userDTO.getUserId()).getPassword();
+
+        if (passwordEncoder.matches(userDTO.getUserPw(), pw))
+        {
+            return true;
+        }
+        else return false;
     }
 
 
