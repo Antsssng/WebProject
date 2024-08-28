@@ -17,7 +17,6 @@ public class UserService {
         //패스워드 암호화
         userDTO.setUserPw(passwordEncoder.encode(userDTO.getUserPw()));
         userRepository.save(userDTO.toEntity());
-
     }
 
     public void deleteUser(UserDTO userDTO) {
@@ -41,5 +40,8 @@ public class UserService {
         else return false;
     }
 
-
+    public String getUserName(String userId)
+    {
+        return userRepository.findByUserId(userId).getUsername();
+    }
 }
