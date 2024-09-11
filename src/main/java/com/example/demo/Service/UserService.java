@@ -14,13 +14,13 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void saveUser(UserDTO userDTO) {
+
         //패스워드 암호화
         userDTO.setUserPw(passwordEncoder.encode(userDTO.getUserPw()));
         userRepository.save(userDTO.toEntity());
     }
 
     public void deleteUser(UserDTO userDTO) {
-
         String pw = userRepository.findByUserId(userDTO.getUserId()).getPassword();
 
         if (passwordEncoder.matches(userDTO.getUserPw(), pw))

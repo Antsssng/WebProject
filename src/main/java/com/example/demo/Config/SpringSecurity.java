@@ -37,6 +37,7 @@ public class SpringSecurity {
         log.info(">> Run on Spring security");
         log.info("======================================");
 
+
         http.authorizeRequests()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/join").permitAll()
