@@ -24,7 +24,7 @@ public class JoinService {
         String userId = joinDTO.getUserId();
         String userPw = joinDTO.getUserPw();
 
-        boolean isExist = userRepository.existsByUsername(userId);
+        boolean isExist = userRepository.existsByUserId(userId);
 
         if (isExist) {
 
