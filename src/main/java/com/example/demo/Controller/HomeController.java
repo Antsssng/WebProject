@@ -23,4 +23,7 @@ public class HomeController {
     public String hello() {
         return "/hello";
     }
+
+    @RequestMapping(value = "/register")
+    public String register() {return "asdf";}
 }

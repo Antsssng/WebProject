@@ -30,16 +30,17 @@ function RegisterPage() {
     }
 
     const body = {
-      email: email,
-      name: name,
-      password: password,
+      userId: email,
+      userName: name,
+      userPw: password,
     };
 
     dispatch(registerUser(body)).then((res) => {
-      if (res.payload.success) {
+        console.log(res);
+      if (res.payload.status == "success") {
         navigate("/login");
-      } else {
-        alert("회원가입에 실패하셨습니다.");
+      } else if (res.payload.body.errorCode == 3000){
+        alert("중복된 아이디 입니다");
       }
     });
   };

@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Slf4j
@@ -37,7 +38,7 @@ public class SpringSecurity {
         log.info(">> Run on Spring security");
         log.info("======================================");
 
-
+        http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeRequests()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/join").permitAll()

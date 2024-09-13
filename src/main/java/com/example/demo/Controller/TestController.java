@@ -11,9 +11,4 @@ public class TestController {
     public String test() {
         return "Hello, world!";
     }
-
-    @PostMapping("/users/register")
-    public String register() {
-        return "Success";
-    }
 }

@@ -1,5 +1,7 @@
 package com.example.demo.Service;
 
+import com.example.demo.DTO.CustomException;
+import com.example.demo.DTO.ErrorCode;
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.Repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -14,6 +16,10 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void saveUser(UserDTO userDTO) {
+
+         if (userRepository.existsByUserId(userDTO.getUserId())) {
+            throw new CustomException(ErrorCode.DUPLICATED_USER_NAME, "중복된 아이디 입니다.");
+         }
 
         //패스워드 암호화
         userDTO.setUserPw(passwordEncoder.encode(userDTO.getUserPw()));
