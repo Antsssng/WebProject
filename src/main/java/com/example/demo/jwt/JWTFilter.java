@@ -1,14 +1,13 @@
 package com.example.demo.jwt;
 
-import com.example.demo.dto.CustomUserDetails;
-import com.example.demo.entity.UserEntity;
+import com.example.demo.user.dto.CustomUserDetails;
+import com.example.demo.user.entity.UserEntity;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 

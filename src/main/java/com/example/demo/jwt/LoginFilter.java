@@ -1,7 +1,6 @@
 package com.example.demo.jwt;
 
-import com.example.demo.dto.CustomUserDetails;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.demo.user.dto.CustomUserDetails;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -62,7 +61,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         String role = auth.getAuthority();
 
-        String token = jwtUtiil.createJwt(userId, role, 60*60*10L);
+        String token = jwtUtiil.createJwt(userId, role, 60*60*10000L);
 
         response.addHeader("Authorization", "Bearer " + token);
     }

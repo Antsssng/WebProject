@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.user.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +17,12 @@ public class MainController {
     @GetMapping("/")
     public String mainP(){
 
+        return "Main Controller";
+    }
+
+
+    @GetMapping("/users")
+    public String userP(){
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -26,6 +32,6 @@ public class MainController {
         GrantedAuthority auth = iter.next();
         String role = auth.getAuthority();
 
-        return "Main Controller" + name + role;
+        return "Main Controller " + name + " " + role;
     }
 }
