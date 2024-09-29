@@ -1,5 +1,6 @@
 package com.example.demo.user.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,7 @@ import java.util.Iterator;
 
 @Controller
 @ResponseBody
+@Tag(name = "메인 API", description = "메인 API입니다.")
 public class MainController {
 
     @GetMapping("/")
@@ -23,15 +25,16 @@ public class MainController {
 
     @GetMapping("/users")
     public String userP(){
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String name = authentication.getName();
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         Iterator<? extends GrantedAuthority> iter = authorities.iterator();
         GrantedAuthority auth = iter.next();
         String role = auth.getAuthority();
 
-        return "Main Controller " + name + " " + role;
+        return "Main Controller " + name + " " + role + "\n";
     }
 }

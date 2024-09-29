@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,11 +16,16 @@ public class ArticleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "articleId")
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private UserEntity userEntity;
+
+    //DB에선 작성 안 되지만 양방향 참조를 위해서 변수 설정
+    @OneToMany(mappedBy = "articleEntity")
+    private List<LikeEntity> likeEntity = new ArrayList<>();
 
     private String title;
 
@@ -31,7 +37,7 @@ public class ArticleEntity {
 
     private String img_path;
 
-    private List<String> like_users;
+//    private List<String> like_users;
 
     private int view_count;
 }

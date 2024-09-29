@@ -1,6 +1,6 @@
 package com.example.demo.user.entity;
 
-import com.example.demo.article.entity.ArticleEntity;
+import com.example.demo.article.entity.LikeEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,12 +17,13 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "userId")
     private String userId;
 
     private String userPw;
 
     private String role;
 
-//    @OneToMany(mappedBy = "ArticleEntity", cascade = CascadeType.ALL)
-//    private List<ArticleEntity> articles = new ArrayList<>();
+//    @OneToMany(mappedBy = "userEntity")
+//    private List<LikeEntity> likeEntity = new ArrayList<>();
 }
